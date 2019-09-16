@@ -2,3 +2,159 @@
 @import "./variable";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+html {
+  color: #000;
+  background: #FFF;
+}
+
+html {
+  color: -internal-root-color;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+.flash-box {
+  color: white;
+  font-size: 1rem;
+  font-weight: lighter;
+  text-align: center;
+  width: 100vw;
+}
+div {
+  display: block;
+}
+
+element.style {
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.chat-side {
+  width: 300px;
+  color: white;
+  float: left;
+}
+.chat-side .side-header {
+  background-color: #253141;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.chat-side .side-header__box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+}
+
+.chat-side .groups {
+  height: calc(100vh - 100px);
+  background-color: #2f3e51;
+  padding: 20px 20px 0;
+  overflow: scroll;
+}
+
+.chat-side a {
+  color: white;
+}
+a {
+  text-decoration: none;
+}
+.chat-side .groups .group {
+  margin-bottom: 40px;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+.chat-main .main-header {
+  height: 100px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #eee;
+  overflow: scroll;
+}
+
+.chat-main .messages .message__text {
+    color: #434a54;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.chat-main .main-header__left-box {
+  margin-top: 35px;
+}
+
+.chat-main .main-header__left-box__current-group {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.chat-main .main-header__left-box__member-list {
+  display: flex;
+  font-size: 12px;
+  color: #999999;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-main .form {
+  height: 90px;
+  padding: 20px 40px;
+  background-color: #ddd;
+}
+
+.chat-main .form form .input-box {
+  position: relative;
+  width: 100%;
+}
+
+.chat-main .form form .submit-btn {
+  width: 100px;
+  height: 50px;
+  padding: 0 30px;
+  margin-left: 15px;
+  background-color: #38aef0;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-main .form form .input-box__text {
+  height: 50px;
+  width: 100%;
+  padding: 0 40px 0 10px;
+  color: #434a54;
+  border-style: none;
+}
