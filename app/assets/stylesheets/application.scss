@@ -1,7 +1,7 @@
+
 @import "./reset";
 @import "./variable";
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+@import "font-awesome";
 
 *::-webkit-scrollbar {
   display: none;
@@ -261,6 +261,16 @@ input, textarea, select {
   right: 10px;
   cursor: pointer;
 }
+
+.chat-main .form form .input-box__text {
+  height: 50px;
+  width: 100%;
+  padding: 0 40px 0 10px;
+  color: #434a54;
+  border-style: none;
+}
+
+
 
 .chat-main .form form .submit-btn {
   width: 100px;
