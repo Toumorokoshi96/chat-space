@@ -1,6 +1,6 @@
 .chat-main .main-header {
   height: $mainheader-height;
-  padding: 0 40px;
+  padding: 0 $main-LR-padding;
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px #eee;
@@ -16,7 +16,7 @@
     margin-top: 30px;
     border: solid 1px $submitbtn-color;
     position: absolute;
-    right: 40px;
+    right: $main-LR-padding;
   }
   &__left-box {
     margin-top: 35px;

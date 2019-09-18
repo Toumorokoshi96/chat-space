@@ -1,6 +1,6 @@
 .chat-main .messages {
   height: calc(100vh - 190px);
-  padding: 46px 40px;
+  padding: 46px $main-LR-padding;
   background-color: $messages-backcolor;
   overflow: scroll;
 
