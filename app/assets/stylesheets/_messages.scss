@@ -1,15 +1,15 @@
 .chat-main .messages {
   height: calc(100vh - 190px);
   padding: 46px 40px;
-  background-color: #fafafa;
+  background-color: $messages-backcolor;
   overflow: scroll;
 
   & .message {
     padding-bottom: 40px;
 
     &__text {
-      color: #434a54;
-      font-size: 14px;
+      color: $messages-textcolor;
+      font-size: $message-text-font;
       margin-bottom: 10px;
     }
     &__upper-info {
@@ -17,7 +17,7 @@
       margin-bottom: 10px;
     
       &__talker {
-        color: #434a54;
+        color: $messages-textcolor;
         font-size: 16px;
         font-weight: bold;
       }

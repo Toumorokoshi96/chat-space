@@ -4,7 +4,6 @@
 @import "./chat-main";
 @import "./chat-side";
 
-
 * {
   box-sizing: border-box;
 }
@@ -15,13 +14,13 @@
 
 .chat-side {
   & a {
-    color: white;
+    color:$side-text-color;
   }
 }
 
 html {
-  color: #000;
-  background: #FFF;
+  color: $base-text-color;
+  background: $html-back-color;
 }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
@@ -30,7 +29,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 }
 
 .flash-box {
-  color: white;
+  color: $flashbox-text-color;
   font-size: 1rem;
   font-weight: lighter;
   text-align: center;
@@ -41,33 +40,6 @@ div {
   display: block;
 }
 
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.fa-edit:before, .fa-pencil-square-o:before {
-  content: "\f044";
-}
-
-.fa-gear:before, .fa-cog:before {
-    content: "\f013";
-}
-
 a {
   text-decoration: none;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
 }
