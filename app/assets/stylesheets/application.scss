@@ -5,21 +5,12 @@
 @import "./chat-side";
 
 
-
-
 * {
   box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {
   display: none;
-}
-
-
-
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
 }
 
 .chat-side {
@@ -67,17 +58,9 @@ div {
     content: "\f013";
 }
 
-
-%li.side-header__box__menu__edit-user
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-}
-
 a {
   text-decoration: none;
 }
-
 
 ol, ul {
   list-style: none;
