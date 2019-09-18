@@ -1,8 +1,6 @@
 
-
-
 .chat-side {
-  width: 300px;
+  width: $side-width;
   color: white;
   float: left;
 
@@ -26,7 +24,6 @@
       }
     }
   }
-
   & .groups {
     height: calc(100vh - 100px);
     background-color: #2f3e51;
