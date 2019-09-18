@@ -4,6 +4,9 @@
 @import "./chat-main";
 @import "./chat-side";
 
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -12,9 +15,17 @@
   display: none;
 }
 
+
+
 a:-webkit-any-link {
   color: -webkit-link;
   cursor: pointer;
+}
+
+.chat-side {
+  & a {
+    color: white;
+  }
 }
 
 html {
@@ -37,10 +48,6 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 
 div {
   display: block;
-}
-
-a {
-    text-decoration: none;
 }
 
 .fa {
@@ -71,11 +78,6 @@ a {
   text-decoration: none;
 }
 
-.chat-side {
-  & a {
-    color: white;
-  }
-}
 
 ol, ul {
   list-style: none;
