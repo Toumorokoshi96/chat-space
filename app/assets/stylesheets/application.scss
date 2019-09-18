@@ -72,6 +72,12 @@ a {
   text-decoration: none;
 }
 
+.chat-side {
+  & a {
+    color: white;
+  }
+}
+
 ol, ul {
   list-style: none;
 }
@@ -80,12 +86,4 @@ input, textarea, select {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-}
-
-.chat-side {
-
-  & a {
-    color: white;
-  }
-
 }
