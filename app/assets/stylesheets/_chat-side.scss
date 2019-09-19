@@ -1,24 +1,20 @@
-
-
-
 .chat-side {
-  width: 300px;
-  color: white;
+  width: $side-width;
+  color: $side-text-color;
   float: left;
 
   & .side-header {
-    background-color: #253141;
-    height: 100px;
+    background-color: $side-header-background-color;
+    height: $sideheader-height;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 $side-LR-padding;
     &__box {
       display: flex;
       justify-content: space-between;
       width: 100%;
       font-weight: bold;
       &__menu {
-
         display: flex;
         & li {
           margin-left: 0.3rem;
@@ -26,11 +22,10 @@
       }
     }
   }
-
   & .groups {
     height: calc(100vh - 100px);
-    background-color: #2f3e51;
-    padding: 20px 20px 0;
+    background-color: $side-header-groups-backcolor;
+    padding: 20px $side-LR-padding 0;
     overflow: scroll;
     & .group {
       margin-bottom: 40px;

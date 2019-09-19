@@ -1,0 +1,32 @@
+.chat-main .messages {
+  height: calc(100vh - 190px);
+  padding: 46px $main-LR-padding;
+  background-color: $messages-backcolor;
+  overflow: scroll;
+
+  & .message {
+    padding-bottom: 40px;
+
+    &__text {
+      color: $messages-textcolor;
+      font-size: $message-text-font;
+      margin-bottom: 10px;
+    }
+    &__upper-info {
+      display: flex;
+      margin-bottom: 10px;
+    
+      &__talker {
+        color: $messages-textcolor;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    
+      &__date {
+        color: #999999;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

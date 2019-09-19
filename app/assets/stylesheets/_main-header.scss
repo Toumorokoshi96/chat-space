@@ -1,0 +1,37 @@
+.chat-main .main-header {
+  height: $mainheader-height;
+  padding: 0 $main-LR-padding;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #eee;
+  overflow: scroll;
+  
+  & a {
+    color: $submitbtn-color;
+  }
+  &__edit-btn {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    margin-top: 30px;
+    border: solid 1px $submitbtn-color;
+    position: absolute;
+    right: $main-LR-padding;
+  }
+  &__left-box {
+    margin-top: 35px;
+    &__member-list {
+      display: flex;
+      font-size: 12px;
+      color: #999999;
+      & li+li {
+        margin-left: 0.3rem;
+      }
+    }
+    &__current-group {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+  }
+}
