@@ -1,2 +1,48 @@
+.flash-box
 .wrapper
-  = render './devise/shared/side_bar'
+  = render 'side_bar'
+  .chat-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group{"data-group_id" => "1247"}
+          GROUP10
+        %ul.main-header__left-box__member-list
+          Member：
+          %li.main-header__left-box__member-list__member dddd
+          %li.main-header__left-box__member-list__member dasdsadsadsa
+          %li.main-header__left-box__member-list__member ddd
+          %li.main-header__left-box__member-list__member dan
+          %li.main-header__left-box__member-list__member dadada
+          %li.main-header__left-box__member-list__member de
+          %li.main-header__left-box__member-list__member dai
+          %li.main-header__left-box__member-list__member クールコーダ
+      %a{:href => "/groups/1247/edit"}
+        .main-header__edit-btn
+          Edit
+    .messages
+      .message{"data-message_id" => "2584"}
+        .message__upper-info
+          %p.message__upper-info__talker
+            クールコーダ
+          %p.message__upper-info__date
+            2019/09/13(Fri) 10:35:50
+        %p.message__text
+          画像
+      .message{"data-message_id" => "2585"}
+        .message__upper-info
+          %p.message__upper-info__talker
+            クールコーダ
+          %p.message__upper-info__date
+            2019/09/13(Fri) 10:36:10
+        %p.message__text
+          寝顔
+    .form
+      %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/1247/messages", :enctype => "multipart/form-data", :method => "post"}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+        %input{:name => "authenticity_token", :type => "hidden", :value => "7tQqU5lYNiBpXMkdehRo7VEvUeLdAamypd2HJt73PST4u3Qa3k7RQyhtjaaIUPm3HYTL/jN+ELZWjhk9mFkK7w=="}/
+        .input-box
+          %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+          %label.input-box__image{:for => "message_image"}
+            %i.fa.fa-image
+            %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
+        %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
