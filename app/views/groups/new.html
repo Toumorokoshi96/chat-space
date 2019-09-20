@@ -1,0 +1,74 @@
+<div class='group-form'>
+  <h1>新規チャットグループ</h1>
+  <%= form_for @group,  class:'new_group' id:'new_group'  do |g| %>
+    <input name='utf8' type='hidden' value='✓'>
+    <input name='authenticity_token' type='hidden' value='AxFKlYEhD6eqX1PiZoTYQDANtKvgcFSXZQXHt5hyTl55/U/CHC5rtPavrcu2za65riz4tekZEy56vP6kEb2wYA=='>
+    <div class='group-form__field clearfix'>
+      <div class='group-form__field--left'>
+        <label class='group-form__label' for='group_name'>グループ名</label>
+      </div>
+      <div class='group-form__field--right'> 
+      <%= g.text_field :name %><input class='group-form__input' id='group_name' name='group[name]' placeholder='グループ名を入力してください' type='text'>
+      </div>
+    </div>
+    <div class='group-form__field clearfix'>
+      <!-- この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します -->
+    </div>
+    <div class='group-form__field clearfix'>
+      <div class='group-form__field--left'>
+        <label class='group-form__label' for='group_チャットメンバー'>チャットメンバー</label>
+      </div>
+      <div class='group-form__field--right'>
+        <!-- グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください -->
+        <!-- この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します -->
+      </div>
+    </div>
+    <div class='group-form__field clearfix'>
+      <div class='group-form__field--left'></div>
+      <div class='group-form__field--right'>
+        <input class='group-form__action-btn' data-disable-with='Save' name='commit' type='submit' value='Save'>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+<!-- <div class='group-form'>
+    <h1>新規チャットグループ</h1>
+    <form accept-charset='UTF-8' action='/groups' class='new_group' id='new_group' method='post'>
+      <input name='utf8' type='hidden' value='✓'>
+      <input name='authenticity_token' type='hidden' value='AxFKlYEhD6eqX1PiZoTYQDANtKvgcFSXZQXHt5hyTl55/U/CHC5rtPavrcu2za65riz4tekZEy56vP6kEb2wYA=='>
+      <div class='group-form__field clearfix'>
+        <div class='group-form__field--left'>
+          <label class='group-form__label' for='group_name'>グループ名</label>
+        </div>
+        <div class='group-form__field--right'>
+          <input class='group-form__input' id='group_name' name='group[name]' placeholder='グループ名を入力してください' type='text'>
+        </div>
+      </div>
+      <div class='group-form__field clearfix'>
+
+      </div>
+      <div class='group-form__field clearfix'>
+        <div class='group-form__field--left'>
+          <label class='group-form__label' for='group_チャットメンバー'>チャットメンバー</label>
+        </div>
+        <div class='group-form__field--right'>
+
+
+        </div>
+      </div>
+      <div class='group-form__field clearfix'>
+        <div class='group-form__field--left'></div>
+        <div class='group-form__field--right'>
+          <input class='group-form__action-btn' data-disable-with='Save' name='commit' type='submit' value='Save'>
+        </div>
+      </div>
+    </form>
+  </div>
+ -->
