@@ -1,6 +1,6 @@
 <div class='group-form'>
   <h1>新規チャットグループ</h1>
-  <%= form_for @group,  class:'new_group' id:'new_group'  do |g| %>
+  <%= form_for @group,  class:'new_group', id:'new_group' do |g| %>
     <input name='utf8' type='hidden' value='✓'>
     <input name='authenticity_token' type='hidden' value='AxFKlYEhD6eqX1PiZoTYQDANtKvgcFSXZQXHt5hyTl55/U/CHC5rtPavrcu2za65riz4tekZEy56vP6kEb2wYA=='>
     <div class='group-form__field clearfix'>
@@ -8,7 +8,7 @@
         <label class='group-form__label' for='group_name'>グループ名</label>
       </div>
       <div class='group-form__field--right'> 
-      <%= g.text_field :name %><input class='group-form__input' id='group_name' name='group[name]' placeholder='グループ名を入力してください' type='text'>
+      <%= g.text_field :name, rclass: 'group-form__input', id: 'group_name', name: 'group[name]', placeholder: 'グループ名を入力してください', type: 'text' %>
       </div>
     </div>
     <div class='group-form__field clearfix'>
