@@ -1,19 +1,38 @@
 .chat-group-form
   %h1 新規チャットグループ
-  = form_for(@group, url: groups_path) do |g|
-    .chat-group-form__field.clearfix
-      .chat-group-form__field--left
-        = g.label :name, "グループ名" 
-        = g.text_field :name, {placeholder: "グループ名を入力してください"}
-    .chat-group-form__field.clearfix
-      -#  この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-    .chat-group-form__field.clearfix
-      .chat-group-form__field--left
-        = g.label :user, "チャットメンバー"
-      .chat-group-form__field--right
-      -#  グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-      -#  この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
-    .chat-group-form__field.clearfix
-      .chat-group-form__field--left
-      .chat-group-form__field--right
-    = g.submit :Save
+  = render 'form', { group: @group }
+
+-# .chat-group-form
+-#   %h1 新規チャットグループ
+-#   = form_for(@group, url: groups_path) do |g|
+-#     - if @group.errors.any?
+-#       .chat-group-form__errors
+-#         %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
+-#         %ul
+-#           - @group.errors.full_messages.each do |message|
+-#             %li= message
+-#     .chat-group-form__field.clearfix
+-#       .chat-group-form__field--left
+-#         = g.label :name, "グループ名", {class:"chat-group-form__label"}
+-#       .chat-group-form__field--right
+-#         = g.text_field :name, {placeholder: "グループ名を入力してください", class: "chat__group_name chat-group-form__input"}
+-#     .chat-group-form__field.clearfix
+-#       .chat-group-form__field--left
+-#         = g.label :id, "チャットメンバーを追加", {class:"chat-group-form__label"}
+-#       .chat-group-form__field--right
+-#         = g.text_field :id, {placeholder: "追加したいユーザーを入力してください", class: "chat__group_search chat-group-form__input"}
+-#       -#  g.text_field :idの:idは、見た目を整えるため、@groupのカラム値で無いとエラーが出るようなので
+-#       -#  この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+-#     .chat-group-form__field.clearfix
+-#       .chat-group-form__field--left
+-#         = g.label :user, "チャットメンバー", {class:"chat-group-form__label"}
+-#       .chat-group-form__field--right
+-#         .chat-group-users.js-add-user
+-#           .chat-group-user.clearfix.js-chat-member#768
+-#             .chat-group-user__name
+-#               = g.collection_check_boxes :user_ids, User.all, :id, :name
+-#       -#  この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
+-#     .chat-group-form__field.clearfix
+-#       .chat-group-form__field--left
+-#       .chat-group-form__field--right
+-#         = g.submit :登録する, {class: "chat-group-form__action-btn"}
