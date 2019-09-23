@@ -2,23 +2,7 @@
 .wrapper
   = render 'side_bar'
   .chat-main
-    .main-header
-      .main-header__left-box
-        %h2.main-header__left-box__current-group{"data-group_id" => "1247"}
-          GROUP10
-        %ul.main-header__left-box__member-list
-          Member：
-          %li.main-header__left-box__member-list__member dddd
-          %li.main-header__left-box__member-list__member dasdsadsadsa
-          %li.main-header__left-box__member-list__member ddd
-          %li.main-header__left-box__member-list__member dan
-          %li.main-header__left-box__member-list__member dadada
-          %li.main-header__left-box__member-list__member de
-          %li.main-header__left-box__member-list__member dai
-          %li.main-header__left-box__member-list__member クールコーダ
-      %a{:href => "/groups/1247/edit"}
-        .main-header__edit-btn
-          Edit
+    = render 'main_header'
     .messages
       .message{"data-message_id" => "2584"}
         .message__upper-info

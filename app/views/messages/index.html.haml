@@ -1,42 +1,8 @@
 .flash-box
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__box
-        %p.side-header__box__user-name
-          クールコーダ
-        %ul.side-header__box__menu
-          %li.side-header__box__menu__new-group
-            %a{:href => "/groups/new"}
-              %i.fa.fa-edit
-          %li.side-header__box__menu__edit-user
-            %a{:href => "/users/680/edit"}
-              %i.fa.fa-cog
-    .groups
-      %a{:href => "/groups/1247/messages"}
-        .group
-          %p.group__group-name GROUP10
-          %p.group__latest-message 画像
-
-          
+  = render './groups/side_bar'          
   .chat-main
-    .main-header
-      .main-header__left-box
-        %h2.main-header__left-box__current-group{"data-group_id" => "1247"}
-          GROUP10
-        %ul.main-header__left-box__member-list
-          Member：
-          %li.main-header__left-box__member-list__member dddd
-          %li.main-header__left-box__member-list__member dasdsadsadsa
-          %li.main-header__left-box__member-list__member ddd
-          %li.main-header__left-box__member-list__member dan
-          %li.main-header__left-box__member-list__member dadada
-          %li.main-header__left-box__member-list__member de
-          %li.main-header__left-box__member-list__member dai
-          %li.main-header__left-box__member-list__member クールコーダ
-      %a{:href => "/groups/1247/edit"}
-        .main-header__edit-btn
-          Edit
+    = render './groups/main_header'
     .messages
       .message{"data-message_id" => "2584"}
         .message__upper-info
