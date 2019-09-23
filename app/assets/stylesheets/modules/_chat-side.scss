@@ -1,42 +1,48 @@
 .side-bar {
-  width: $side-width;
   color: $side-text-color;
+  width: $side-width;
   float: left;
-
+  a{
+    color: $side-text-color;
+  }
   .header {
     background-color: $side-header-background-color;
     height: $sideheader-height;
-    display: flex;
     align-items: center;
     padding: 0 $side-LR-padding;
-    %h3 &__name {
+    display: flex;
+    &-main {
+      font-weight: bold;
       display: flex;
       justify-content: space-between;
       width: 100%;
-      font-weight: bold;
-      %ul &__lists {
+      h3.header__name{
+        font-weight: bold;
+      }
+      ul.header__lists{
         display: flex;
-        %li.list {
+        li.list{
+          font-size: 16px;
           margin-left: 0.3rem;
         }
       }
     }
   }
-  & .groups {
-    height: calc(100vh - 100px);
+
+  .groups {
     background-color: $side-header-groups-backcolor;
+    height: calc(100vh - 100px);
     padding: 20px $side-LR-padding 0;
     overflow: scroll;
-    & .group {
+    .group {
       margin-bottom: 40px;
-      .group__name {
+      &__name {
         font-size: 15px;
         margin-bottom: 5px;
       }
-      .group__message {
+      &__message {
         font-size: 11px;
       }
     }
   }
-
 }
