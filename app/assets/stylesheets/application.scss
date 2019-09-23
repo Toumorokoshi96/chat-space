@@ -16,12 +16,6 @@
   display: none;
 }
 
-.chat-side {
-  & a {
-    color:$side-text-color;
-  }
-}
-
 html {
   color: $base-text-color;
   background: $html-back-color;
