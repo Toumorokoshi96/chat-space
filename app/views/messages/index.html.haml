@@ -3,23 +3,7 @@
   = render './groups/side_bar'          
   .chat-main
     = render './groups/main_header'
-    .messages
-      .message{"data-message_id" => "2584"}
-        .message__upper-info
-          %p.message__upper-info__talker
-            クールコーダ
-          %p.message__upper-info__date
-            2019/09/13(Fri) 10:35:50
-        %p.message__text
-          画像
-      .message{"data-message_id" => "2585"}
-        .message__upper-info
-          %p.message__upper-info__talker
-            クールコーダ
-          %p.message__upper-info__date
-            2019/09/13(Fri) 10:36:10
-        %p.message__text
-          寝顔
+    = render 'messages_index'
     .form
       %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/1247/messages", :enctype => "multipart/form-data", :method => "post"}
         %input{:name => "utf8", :type => "hidden", :value => "✓"}/
