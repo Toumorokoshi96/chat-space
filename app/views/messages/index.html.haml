@@ -1,8 +1,8 @@
 .flash-box
 .wrapper
-  = render './groups/side_bar'          
+  = render './groups/index/side_bar'          
   .chat-main
-    = render './groups/main_header'
+    = render './groups/index/main_header'
     = render 'messages_index'
     .form
       %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/1247/messages", :enctype => "multipart/form-data", :method => "post"}
