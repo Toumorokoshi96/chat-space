@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.first
     @group_id = @group.id
     @group_users = @group.users
+    @message = Message.new
   end
 
   def new
