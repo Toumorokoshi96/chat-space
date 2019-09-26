@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.first
     @group_id = @group.id
     @group_users = @group.users
+    @message = Message.new #ビュー表示で、form_forの引数として必要
   end
 
   def new
