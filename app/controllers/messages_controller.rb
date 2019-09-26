@@ -14,6 +14,8 @@ class MessagesController < ApplicationController
     else
       @messages = @group.messages.includes(:user)
       flash.now[:alert] = 'メッセージを入力してください。'
+      # flashはページ切り替えに伴う簡易メッセージを表示するメソッド
+      #他にflash.keepやflash[:noticeなどがある]
       render :index
     end
   end
