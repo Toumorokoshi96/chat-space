@@ -1,16 +1,9 @@
+-# GroupssControllerからの遷移
 .flash-box
 .wrapper
-  = render 'index/side_bar'
+  .side-bar
+    = render 'side_bar_contents'
   .chat-main
-    = render 'index/main_header'
-    = render './messages/messages_index'
-    .form
-      %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/1247/messages", :enctype => "multipart/form-data", :method => "post"}
-        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-        %input{:name => "authenticity_token", :type => "hidden", :value => "7tQqU5lYNiBpXMkdehRo7VEvUeLdAamypd2HJt73PST4u3Qa3k7RQyhtjaaIUPm3HYTL/jN+ELZWjhk9mFkK7w=="}/
-        .input-box
-          %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-          %label.input-box__image{:for => "message_image"}
-            %i.fa.fa-image
-            %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
-        %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+    = render 'main_header'
+    .messages
+    = render './messages/messages_form'
