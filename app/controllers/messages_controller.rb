@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_group
 
   def index
+    redirect_to new_user_session_path unless user_signed_in?
     @message = Message.new
     @group_users = @group.users
     @messages = @group.messages

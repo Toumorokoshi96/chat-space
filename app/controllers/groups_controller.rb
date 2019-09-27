@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   
   def index
-    @group = current_user.groups.first
+    @group = current_user.groups.first #どこのグループにも属していないユーザーへの対応必要
     @group_id = @group.id
     @group_users = @group.users
     @message = Message.new #ビュー表示で、form_forの引数として必要
