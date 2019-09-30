@@ -1,25 +1,28 @@
 $(function(){
   function messageHTMLgenerater(message){
     var html = `
-    <div class='message' 'message_id' = id>
+    <div class='message' 'message_id' = ${message.id}>
     <div class='message__upper-info'>
     <p class='message__upper-info__talker'>
-     name
+    ${message.name}
     </p>
     <p class='message__upper-info__date'>
-     date
+    ${message.date}
     </p>
     </div>
     <p class='message__text'>
-     text
+    ${message.text}
     </p>
     <div class='message-content'>
-     image
+    <img class="message__image" src="${message.image_src}" />
     </div>
     </div>`
 
   return html;
   }
+  // function getPostedPart(message){
+  //   return $(${message.id});
+  // }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -34,9 +37,11 @@ $(function(){
     })
     .done(function(message){
     var messageHTML = messageHTMLgenerater(message);
-    //  var messageHTML = messageHTML(message);
-     var messages = $(".messages");
-     messages.append(messageHTML);
+    var messages = $(".messages");
+    messages.append(messageHTML);
+    $('.form__submit').prop('disabled', false);
+    console.log('hoge')
+    // getPostedPart(message).scrollIntoView(true);
     })
     .fail(function(){
     alert.apply('error')
