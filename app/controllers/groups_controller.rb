@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
   def index
     if current_user.groups.first then
       @group = current_user.groups.first #どこのグループにも属していないユーザーへの対応必要
-      binding.pry
       @group_id = @group.id
       @group_users = @group.users
     end
