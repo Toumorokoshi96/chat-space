@@ -41,16 +41,16 @@ $(document).on('turbolinks:load', function(){
       contentType: false
     })
     .done(function(message){
-    var messageHTML = messageHTMLgenerater(message);
-    var messages = $(".messages");
-    messages.append(messageHTML);
-    $('.form__submit').prop('disabled', false);
-    var scrollSelecter = scrollSelecterGenerater(message);
-    console.log(scrollSelecter);
-    $(".messages").animate({scrollTop:$(scrollSelecter).offset().top});
-    })
+      var messageHTML = messageHTMLgenerater(message);
+      var scrollSelecter = scrollSelecterGenerater(message);
+      var messages = $(".messages");
+      
+      messages.append(messageHTML);
+      $(".messages").animate({scrollTop:$(scrollSelecter).offset().top});
+      $('.form__submit').prop('disabled', false);
+      })
     .fail(function(){
-    alert("error");
+      alert("error");
     })
   })
 })
