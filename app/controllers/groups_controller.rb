@@ -3,11 +3,11 @@ class GroupsController < ApplicationController
   
   def index
     if current_user.groups.first then
-      @group = current_user.groups.first #どこのグループにも属していないユーザーへの対応必要
+      @group = current_user.groups.first
       @group_id = @group.id
       @group_users = @group.users
     end
-    @message = Message.new #ビュー表示で、form_forの引数として必要
+    @message = Message.new
   end
 
   def new
