@@ -2,7 +2,9 @@
 .flash-box
 .wrapper
   .side-bar
-    = render 'side_bar_contents'
+    .header
+      = render 'user_info'  
+    = render 'groups_info' 
   .chat-main
     = render 'main_header'
     .messages
