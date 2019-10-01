@@ -17,18 +17,10 @@ $(document).on('turbolinks:load', function(){
     ${message.image_src}
     </div>
     </div>`
-
-  return html;
-  }
-
-  function scrollSelecterGenerater(message){
-    var html = `
-    [message_id="${message.id}"]`
     return html;
   }
 
   $('#new_message').on('submit', function(e){
-    console.log("ok")
     e.preventDefault();
     var formData = new FormData(this);
     var uri = $(this).attr('action');
@@ -42,15 +34,19 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(message){
       var messageHTML = messageHTMLgenerater(message);
-      var scrollSelecter = scrollSelecterGenerater(message);
-      var messages = $(".messages");
-      
+      var messages = $('.messages');
       messages.append(messageHTML);
-      $(".messages").animate({scrollTop:$(scrollSelecter).offset().top});
+
       $('.form__submit').prop('disabled', false);
-      })
+      $('.form__message').val('');
+      $('#message_image').val('');
+
+      var messagesTotalHeight = $('.messages').get(0).scrollHeight;
+      $('.messages').animate({scrollTop:messagesTotalHeight});
+    })
     .fail(function(){
       alert("error");
+      $('.form__submit').prop('disabled', false);
     })
   })
 })
