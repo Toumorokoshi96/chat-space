@@ -20,13 +20,6 @@ $(document).on('turbolinks:load', function(){
 
   return html;
   }
-
-  function scrollSelecterGenerater(message){
-    var html = `
-    [message_id="${message.id}"]`
-    return html;
-  }
-
   $('#new_message').on('submit', function(e){
     console.log("ok")
     e.preventDefault();
@@ -43,9 +36,10 @@ $(document).on('turbolinks:load', function(){
     .done(function(message){
     var messageHTML = messageHTMLgenerater(message);
     var messages = $(".messages");
+    var message_id = message.id;
     messages.append(messageHTML);
     $('.form__submit').prop('disabled', false);
-    var scrollSelecter = scrollSelecterGenerater(message);
+    var scrollSelecter = '[message_id="' + message_id + '"]';
     console.log(scrollSelecter);
     $(".messages").animate({scrollTop:$(scrollSelecter).offset().top});
     })
