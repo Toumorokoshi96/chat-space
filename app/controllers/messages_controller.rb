@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @message = @group.messages.new(message_params)
       if @message.save
         respond_to do |format|
-          
+          format.html
           format.json 
         end
       else
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
          format.html {@messages = @group.messages.includes(:user)
                       flash.now[:alert] = 'メッセージを入力してください。'
                       render :index}
-         format.json  
+         format.json
         end
       end
   end

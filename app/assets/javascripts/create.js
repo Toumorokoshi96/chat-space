@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   function messageHTMLgenerater(message){
     var html = `
     <div class='message' message_id = ${message.id}>
@@ -20,10 +20,8 @@ $(function(){
 
   return html;
   }
-  // function getPostedPart(message){
-  //   return $(${message.id});
-  // }
   $('#new_message').on('submit', function(e){
+    console.log("ok")
     e.preventDefault();
     var formData = new FormData(this);
     var uri = $(this).attr('action');
@@ -41,15 +39,12 @@ $(function(){
     var message_id = message.id;
     messages.append(messageHTML);
     $('.form__submit').prop('disabled', false);
-    console.log('hoge');
-    // var scrollSelecter = '[message_id="155"]';
     var scrollSelecter = '[message_id="' + message_id + '"]';
     console.log(scrollSelecter);
     $(".messages").animate({scrollTop:$(scrollSelecter).offset().top});
-    // getPostedPart(message).scrollIntoView(true);
     })
     .fail(function(){
-    alert.apply('error')
+    alert("error");
     })
   })
 })
