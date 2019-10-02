@@ -8,6 +8,9 @@
         -@group.users.each do |group_user|
           %li.main-header__left-box__member-list__member
             =group_user.name
-    %a{:href => edit_group_path(@group.id)}
+    =link_to  edit_group_path(@group.id) do
       .main-header__edit-btn
         Edit
+    -# %a{:href => edit_group_path(@group.id)}
+    -#   .main-header__edit-btn
+    -#     Edit
