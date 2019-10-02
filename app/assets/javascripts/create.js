@@ -38,6 +38,7 @@ $(document).on('turbolinks:load', function(){
       messages.append(messageHTML);
 
       $('form').get(0).reset();
+      $('.form__submit').prop('disabled', false);
 
       var messagesTotalHeight = $('.messages').get(0).scrollHeight;
       $('.messages').animate({scrollTop:messagesTotalHeight});
