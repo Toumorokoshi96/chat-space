@@ -1,7 +1,7 @@
 .main-header
   -if @group then
     .main-header__left-box
-      %h2.main-header__left-box__current-group{"group_id" => @group.id}
+      %h2.main-header__left-box__current-group{group_id: @group.id}
         =@group.name
       %ul.main-header__left-box__member-list
         Member：
