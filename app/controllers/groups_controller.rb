@@ -2,10 +2,12 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   
   def index
-    @group = current_user.groups.first
-    @group_id = @group.id
-    @group_users = @group.users
-    @message = Message.new #ビュー表示で、form_forの引数として必要
+    if current_user.groups.first then
+      @group = current_user.groups.first
+      @group_id = @group.id
+      @group_users = @group.users
+    end
+    @message = Message.new
   end
 
   def new
@@ -36,6 +38,8 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:id])
+    if Group.find(params[:id]) then
+      @group = Group.find(params[:id])
+    end
   end
 end
