@@ -9,12 +9,19 @@ function userRowGenerater(user){
           </div>`
   return html;
 }
+//$('.chat-group-user__btn--add').addEventListener('click', function() {
+//  data-user-id="${user.id}
+//  params[]=
+//  
+//}, false);
 
-
-var noResultHtml = `
+function noResultHtmlGenerater(){
+  var html = `
           <div class="chat-group-user clearfix">
-          <p class="chat-group-user__name">'一致するユーザーはいません'</p>
+          <p class="chat-group-user__name">一致するユーザーはいません</p>
           </div>`
+  return html;
+}
 
   $('#user-search-field').on('keyup', function(e){
     let input = $("#user-search-field").val();
@@ -37,7 +44,8 @@ var noResultHtml = `
         });
       }
       else {
-        userSearchResultTag.append('一致するユーザーはいません');
+        var noResultHtml = noResultHtmlGenerater();
+        userSearchResultTag.append(noResultHtml);
       }
       
     })
