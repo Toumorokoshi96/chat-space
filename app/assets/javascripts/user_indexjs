@@ -1,0 +1,34 @@
+$(document).on('turbolinks:load', function(){
+  function HTMLgenerater(user){
+    var html = `
+    <div class="chat-group-user clearfix">
+      <p class="chat-group-user__name">${user.name}</p>
+      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
+    </div>`
+    return html;
+  }
+
+  $('#インクリメンタル検索フォーム').on('keytouch', function(e){
+    //e.preventDefault();ここでは不要、だと思う
+    var formData = new FormData(this);//フォームに今入った文字受け取る
+    var uri = $('#インクリメンタル検索フォーム').メソッド;
+    $.ajax({
+      url: uri,
+      type: "POST", // 送信:使用するHTTPメソッド
+      data: formData, // 送信:送信するデータ
+      dataType: 'json', // respond_toに渡る、下りデータの種類指定(xml/html/script/json/jsonp/text)
+      processData: false,
+      contentType: false
+    })
+    .done(function(users)){ //検索に一致したusersのjson形式を受け取る
+      var userSearchResultTag = $('#user-search-result'); //結果が入るタグ
+      users.each i user { //JSでのeach処理
+        var userHTML = userHTMLgenerater(user);
+        userSearchResultTag.append(userHTML);
+      }
+    })
+    .fail(function(){
+      alert("error");
+    })
+  })
+})

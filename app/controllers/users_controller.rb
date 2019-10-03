@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  def index
+    # javascriptで呼ばれてjson返す
+    @param_contents = params
+    respond_to do |format|
+      format.json 
+    end
+  end
+
   def edit
   end
 
