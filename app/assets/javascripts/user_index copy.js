@@ -1,26 +1,33 @@
 $(document).on('turbolinks:load', function(){
   console.log('jsnya');
   $('#user-search-field').on('keyup', function(e){
-    //e.preventDefault();ここでは不要、だと思う
-    console.log('chakka');
-    var str = "nyan";
+    let input = $("#user-search-field").val();
+    console.log(input);
+
     $.ajax({
       url: "/users",
       type: "GET",
-      data: str,
+      data: {keyword: input},//
       dataType: 'json',
-      processData: false,
-      contentType: false
+      // processData: false,
+      // contentType: false
     })
-    .done(function(jsonResponce){
-      console.log('done');
-      nyan = jsonResponce.str;
+    .done(function(users){
+      //$(".listview.js-lazy-load-images").empty();
+      if (users.length !== 0) {
+        users.forEach(function(user){
+          console.log(user.name);
+        });
+      }
+      else {
+        // appendErrMsgToHTML("一致するユーザーはいません");
+      }
       var userSearchResultTag = $('#user-search-result');
-      userSearchResultTag.append(nyan);
+      userSearchResultTag.append(users.name);
     })
-    .fail(function(){
-      console.log('fail');
-      alert("error");
+    .fail(function() {
+      alert('エラーです');
     })
+
   })
 })

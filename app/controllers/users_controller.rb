@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    # javascriptで呼ばれてjson返す
-    @param_contents = params
+    @users = User.where('name LIKE(?)', "#{params[:keyword]}%").limit(5)
     respond_to do |format|
       format.json 
     end
