@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
-//検索された追加候補ユーザー一人分（一行に対応）のHTMLを生成
-  function searchedUserRowGenerater(user){
+//追加候補一人分（一行）を生成
+  function searchedUserRowHTMLGenerater(user){
     var html = `
             <div class="chat-group-user clearfix">
               <p class="chat-group-user__name">${user.name}</p>
@@ -10,11 +10,12 @@ $(document).on('turbolinks:load', function(){
                 </div>
             </div>`
     return html;
-    //親要素.append.(html)
-    //"追加"クリックでgroupUserRowGeneraterが呼ばれるイベント付与
   }
-//現在グループに所属している削除候補ユーザー一人分（一行に対応）のHTMLを生成
-  function groupUserRowGenerater(user){
+
+
+
+//検索結果の”追加”クリックで呼び出される、現メンバーリストに削除ボタン付きの行を加える
+  function groupUserRowHTMLGenerater(user){
     var html = `
           <div class="chat-group-user clearfix">
             <p class="chat-group-user__name">${user.name}</p>
@@ -24,22 +25,11 @@ $(document).on('turbolinks:load', function(){
             </div>
           </div>`
     return html;
-    //親要素.append.(html)
-    //"削除"クリックでsearchedUserRowGeneraterが呼ばれるイベント付与
+    //$('#groupMember').append(searchedUserRowHTML);.append.(html);
+    //"削除".addEventListner('click', newHalfRemovedMember, false);
   }
-
-//function newCandidateMember(candidateMember) {
-    //params[:group][:user-ids][]<-末尾に付与(candidateMember);
-    //userのidは属性data-user-idで指定できる(searchedUserRowGenerater参照);
-    //params[:group][:user-ids][] << this.('data-user-id');
-
-    //検索結果->グループメンバー
-    //要素(属性data-user-idの値 == candidateMemberID).<-の親要素.削除;
-    //var newGroupUserRow = groupUserRowGenerater(candidateMember);
-    //$(上のタグ).append(newGroupUserRow);
-//}
-
   //function newHalfRemovedMember(halfRemovedMemberID searchedUsers){
+    //"削除"ボタンで呼び出される、ボタンとの紐付けは？
     //params[:group][:user-ids][].halfRemovedMemberID.削除;
     //要素(属性data-user-idの値==halfRemovedMemberID).<-の親要素.削除;
 
@@ -80,19 +70,37 @@ $(document).on('turbolinks:load', function(){
       var searchedUserRowHTML = "";
       if(users.length !== 0) {
         users.forEach(function(user){
+          //現行メンバーにいないのなら
           searchedUserRowHTML = "";
-          searchedUserRowHTML = searchedUserRowGenerater(user);
+          searchedUserRowHTML = searchedUserRowHTMLGenerater(user);
           userSearchResultTag.append(searchedUserRowHTML);
 
-        }
+
+        });
       }
       else {
-        var noResultHtml = noResultHtmlGenerater();
-        userSearchResultTag.append(noResultHtml);
+         var noResultHtml = noResultHtmlGenerater();
+         $('#userSearchResult').append(noResultHtml);
       }
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
     })
   })
+
+  $(document).on('click', $('.chat-group-user__btn--add'), function(){
+    // function newCandidateMember(candidateMember) {
+        console.log(this);
+        ////submit時にgroupメンバーとして送信されるリストへの付加
+        //params[:group][:user-ids][]<-末尾に付与(candidateMember);
+        //userのidは属性data-user-idの属性値;
+        //params[:group][:user-ids][] << this.('data-user-id');
+
+        //検索結果->グループメンバー
+        //要素(属性data-user-idの値 == candidateMemberID).<-の親要素.削除;
+        //var newGroupUserRow = groupUserRowHTMLGenerater(candidateMember);
+        //$(上のタグ).append(newGroupUserRow);
+    
+  });
+
 })
