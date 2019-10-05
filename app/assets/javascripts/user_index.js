@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function(){
-//追加候補一人分（一行）を生成
-  function searchedUserRowHTMLGenerater(user){
+  function searchedUserRowGenerater(user){
     var html = `
             <div class="chat-group-user clearfix">
               <p class="chat-group-user__name">${user.name}</p>
@@ -9,10 +8,9 @@ $(document).on('turbolinks:load', function(){
                   追加
                 </div>
             </div>`
-    return html;
+    $('#user-search-result').append(html);
   }
-//検索結果の”追加”クリックで呼び出される、現メンバーリストに削除ボタン付きの行を加える
-  function groupUserRowHTMLGenerater(id, name){
+  function groupUserRowGenerater(id, name){
     var html = `
           <div class="chat-group-user clearfix">
             <p class="chat-group-user__name">${name}</p>
@@ -21,8 +19,7 @@ $(document).on('turbolinks:load', function(){
               削除
             </div>
           </div>`
-    return html;
-    //$('#groupMember').append(searchedUserRowHTML);.append.(html);
+    $('#group-members').append(html);
   }
   //function newHalfRemovedMember(halfRemovedMemberID searchedUsers){
     //"削除"ボタンで呼び出される、ボタンとの紐付けは？
@@ -40,12 +37,12 @@ $(document).on('turbolinks:load', function(){
     // }
   //}
 
-  function noResultHtmlGenerater(){
+  function noResultRowGenerater(){
     var html = `
             <div class="chat-group-user clearfix">
             <p class="chat-group-user__name">一致するユーザーはいません</p>
             </div>`
-    return html;
+    $('#user-search-result').append(html);
   }
 
   $('#user-search-field').on('keyup', function(e){
@@ -58,23 +55,19 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
     })
     .done(function(users){
-      //検索結果を内包する要素取得
-      var userSearchResultTag = $('#user-search-result');
       //今表示されている検索結果を削除
-      userSearchResultTag.empty();
+      $('#user-search-result').empty();
       //検索結果を書き込む
       var searchedUserRowHTML = "";
       if(users.length !== 0) {
         users.forEach(function(user){
           //現行メンバーにいないのなら
           searchedUserRowHTML = "";
-          searchedUserRowHTML = searchedUserRowHTMLGenerater(user);
-          userSearchResultTag.append(searchedUserRowHTML);
+          searchedUserRowGenerater(user);
         });
       }
       else {
-         var noResultHtml = noResultHtmlGenerater();
-         $('#userSearchResult').append(noResultHtml);
+        noResultRowGenerater();
       }
     })
     .fail(function() {
@@ -82,13 +75,10 @@ $(document).on('turbolinks:load', function(){
     })
   })
 
-//  $(document).on('click', $('.chat-group-user__btn--add'), function(){でもエラーでず前半あたり動く、けどthisがつかえなかった
   $(document).on('click', '.chat-group-user__btn--add', function(){
     var id = $('.user-search-add').data('user-id');
     var name = $('.user-search-add').data('user-name');
-    console.log(this); //this console.log(this);するとhtmlが出てくる、this console.log(${this});にすると謎リストに、謎リストなら.parent()がエラーにならず使えた
-    html = groupUserRowHTMLGenerater(id, name);
-    $('#group-members').append(html);
+    groupUserRowGenerater(id, name);
     $(this).parent().remove();
   });
 
