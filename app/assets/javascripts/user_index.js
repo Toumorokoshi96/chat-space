@@ -11,22 +11,18 @@ $(document).on('turbolinks:load', function(){
             </div>`
     return html;
   }
-
-
-
 //検索結果の”追加”クリックで呼び出される、現メンバーリストに削除ボタン付きの行を加える
-  function groupUserRowHTMLGenerater(user){
+  function groupUserRowHTMLGenerater(id, name){
     var html = `
           <div class="chat-group-user clearfix">
-            <p class="chat-group-user__name">${user.name}</p>
+            <p class="chat-group-user__name">${name}</p>
             <div class="user-search-add chat-group-user__btn chat-group-user__btn--remove" 
-            data-user-id="${user.id}" data-user-name="${user.name}">
+            data-user-id="${id}" data-user-name="${name}">
               削除
             </div>
           </div>`
     return html;
     //$('#groupMember').append(searchedUserRowHTML);.append.(html);
-    //"削除".addEventListner('click', newHalfRemovedMember, false);
   }
   //function newHalfRemovedMember(halfRemovedMemberID searchedUsers){
     //"削除"ボタンで呼び出される、ボタンとの紐付けは？
@@ -74,8 +70,6 @@ $(document).on('turbolinks:load', function(){
           searchedUserRowHTML = "";
           searchedUserRowHTML = searchedUserRowHTMLGenerater(user);
           userSearchResultTag.append(searchedUserRowHTML);
-
-
         });
       }
       else {
@@ -88,19 +82,17 @@ $(document).on('turbolinks:load', function(){
     })
   })
 
-  $(document).on('click', $('.chat-group-user__btn--add'), function(){
-    // function newCandidateMember(candidateMember) {
-        console.log(this);
-        ////submit時にgroupメンバーとして送信されるリストへの付加
-        //params[:group][:user-ids][]<-末尾に付与(candidateMember);
-        //userのidは属性data-user-idの属性値;
-        //params[:group][:user-ids][] << this.('data-user-id');
-
-        //検索結果->グループメンバー
-        //要素(属性data-user-idの値 == candidateMemberID).<-の親要素.削除;
-        //var newGroupUserRow = groupUserRowHTMLGenerater(candidateMember);
-        //$(上のタグ).append(newGroupUserRow);
-    
+//  $(document).on('click', $('.chat-group-user__btn--add'), function(){でもエラーでず前半あたり動く、けどthisがつかえなかった
+  $(document).on('click', '.chat-group-user__btn--add', function(){
+    var id = $('.user-search-add').data('user-id');
+    var name = $('.user-search-add').data('user-name');
+    console.log(this); //this console.log(this);するとhtmlが出てくる、this console.log(${this});にすると謎リストに、謎リストなら.parent()がエラーにならず使えた
+    html = groupUserRowHTMLGenerater(id, name);
+    $('#group-members').append(html);
+    $(this).parent().remove();
   });
 
+  $(document).on('click', '.chat-group-user__btn--remove', function(){ 
+    $(this).parent().remove();
+  });
 })
