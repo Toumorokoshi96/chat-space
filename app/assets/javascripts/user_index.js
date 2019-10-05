@@ -13,29 +13,18 @@ $(document).on('turbolinks:load', function(){
   function groupUserRowGenerater(id, name){
     var html = `
           <div class="chat-group-user clearfix">
-            <p class="chat-group-user__name">${name}</p>
-            <div class="user-search-add chat-group-user__btn chat-group-user__btn--remove" 
-            data-user-id="${id}" data-user-name="${name}">
-              削除
+            <div class="chat-group-form__field--left">
+              <p class="chat-group-user__name">${name}</p>
+            </div>
+            <div class="chat-group-form__field--right">
+              <div class="user-search-add chat-group-user__btn chat-group-user__btn--remove" 
+              data-user-id="${id}" data-user-name="${name}">
+                削除
+              </div>
             </div>
           </div>`
     $('#group-members').append(html);
   }
-  //function newHalfRemovedMember(halfRemovedMemberID searchedUsers){
-    //"削除"ボタンで呼び出される、ボタンとの紐付けは？
-    //params[:group][:user-ids][].halfRemovedMemberID.削除;
-    //要素(属性data-user-idの値==halfRemovedMemberID).<-の親要素.削除;
-
-    // もしインクリメンタルサーチの結果にそのユーザーがいたら検索結果側htmlにプラス
-    // if(searchedUsers.length !== 0) { //サーチ結果有
-    //   searchedUsers.forEach(function(eachSearchedUser){
-    //     if (eachSearchedUser.id == halfRemovedMemberID){
-    //     newsearchedRowHTML = searchedUserRowGenerater(halfRemovedMember);
-    //     userSearchResultTag.append(newsearchedRowHTML);
-    //     break; //if文全部ぬけるやつ
-    //    }
-    // }
-  //}
 
   function noResultRowGenerater(){
     var html = `
@@ -55,14 +44,10 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
     })
     .done(function(users){
-      //今表示されている検索結果を削除
       $('#user-search-result').empty();
-      //検索結果を書き込む
-      var searchedUserRowHTML = "";
       if(users.length !== 0) {
         users.forEach(function(user){
-          //現行メンバーにいないのなら
-          searchedUserRowHTML = "";
+          //現行メンバーにいないのならif
           searchedUserRowGenerater(user);
         });
       }
@@ -79,10 +64,11 @@ $(document).on('turbolinks:load', function(){
     var id = $('.user-search-add').data('user-id');
     var name = $('.user-search-add').data('user-name');
     groupUserRowGenerater(id, name);
-    $(this).parent().remove();
+    //params[:group][:user-ids][]
+    $(this).closest('.chat-group-user').remove();
   });
 
   $(document).on('click', '.chat-group-user__btn--remove', function(){ 
-    $(this).parent().remove();
+    $(this).closest('.chat-group-user').remove();
   });
 })
