@@ -65,7 +65,6 @@ $(document).on('turbolinks:load', function(){
     var id = $('.user-search-add').data('user-id');
     var name = $('.user-search-add').data('user-name');
     groupUserRowGenerater(id, name);
-    //params[:group][:user-ids][]
     $(this).closest('.chat-group-user').remove();
   });
 
