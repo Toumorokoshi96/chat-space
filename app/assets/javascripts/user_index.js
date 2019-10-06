@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function(){
               <p class="chat-group-user__name">${name}</p>
             </div>
             <div class="chat-group-form__field--right">
+              <input value = "${id}" name = "group[user_ids][]" type="hidden" id="group_user_ids">
               <div class="user-search-add chat-group-user__btn chat-group-user__btn--remove" 
               data-user-id="${id}" data-user-name="${name}">
                 削除
