@@ -65,7 +65,6 @@ $(document).on('turbolinks:load', function(){
       if($('.chat-group-user__btn--add').length === 0) {
         noResultRowGenerater(); 
       }
-      //console.log($('.chat-group-user__btn--add').length);
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
