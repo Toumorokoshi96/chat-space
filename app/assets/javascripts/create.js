@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   function messageHTMLgenerater(message){
-    var html = `
+    let html = `
     <div class='message' message_id = ${message.id}>
     <div class='message__upper-info'>
     <p class='message__upper-info__talker'>
@@ -22,8 +22,8 @@ $(document).on('turbolinks:load', function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var formData = new FormData(this);
-    var uri = $(this).attr('action');
+    let formData = new FormData(this);
+    let uri = $(this).attr('action');
     $.ajax({
       url: uri,
       type: "POST",
@@ -33,14 +33,14 @@ $(document).on('turbolinks:load', function(){
       contentType: false
     })
     .done(function(message){
-      var messageHTML = messageHTMLgenerater(message);
-      var messages = $('.messages');
+      let messageHTML = messageHTMLgenerater(message);
+      let messages = $('.messages');
       messages.append(messageHTML);
 
       $('form').get(0).reset();
       $('.form__submit').prop('disabled', false);
 
-      var messagesTotalHeight = $('.messages').get(0).scrollHeight;
+      let messagesTotalHeight = $('.messages').get(0).scrollHeight;
       $('.messages').animate({scrollTop:messagesTotalHeight});
     })
     .fail(function(){
