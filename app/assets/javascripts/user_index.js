@@ -49,14 +49,14 @@ $(document).on('turbolinks:load', function(){
       //var groupIdList[] = $('div[id=group_user_ids]').??();現行グループのid配列取得
       //console.log('');
       users.forEach(function(user){
-        //if (user.idはgroup-member-id[]のどれとも一致しない){
+        //if (user.idはgroupIdList[]のどれとも一致しない){
           searchedUserRowGenerater(user);
         //}
       });
-      if($('div[data-user-id]').length === 0) {
+      if($('.chat-group-user__btn--add').length === 0) {
         noResultRowGenerater(); 
       }
-      console.log($('div[data-user-id]').length);
+      console.log($('.chat-group-user__btn--add').length);
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
