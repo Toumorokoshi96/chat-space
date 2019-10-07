@@ -45,16 +45,18 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
     })
     .done(function(users){
-    $('#user-search-result').empty();
-    //$(group-member-id).split();現行グループのid配列取得
+      $('#user-search-result').empty();
+      //var groupIdList[] = $('div[id=group_user_ids]').??();現行グループのid配列取得
+      //console.log('');
       users.forEach(function(user){
         //if (user.idはgroup-member-id[]のどれとも一致しない){
           searchedUserRowGenerater(user);
         //}
       });
-      if($('#user-search-result')[0]) {
+      if($('div[data-user-id]').length === 0) {
         noResultRowGenerater(); 
       }
+      console.log($('div[data-user-id]').length);
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
