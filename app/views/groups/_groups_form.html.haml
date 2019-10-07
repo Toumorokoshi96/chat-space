@@ -26,16 +26,14 @@
     .chat-group-form__field--right#group-members
       -group.users.each do |user|
         .chat-group-user.clearfix
-          .chat-group-form__field--left
-            = f.hidden_field :user_ids, value: "#{user.id}", name: "group[user_ids][]"
-            %p.chat-group-user__name
-              #{user.name}
-          .chat-group-form__field--right
-            - unless user.id == current_user.id then
-              .user-search-add.chat-group-user__btn.chat-group-user__btn--remove{"data-user-id": "#{user.id}", "data-user-name": "#{user.name}"}
-                削除
+          = f.hidden_field :user_ids, value: "#{user.id}", name: "group[user_ids][]"
+          %p.chat-group-user__name
+            #{user.name}
+          - unless user.id == current_user.id then
+            .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove{"data-user-id": "#{user.id}", "data-user-name": "#{user.name}"}
+              削除
 
-  .chat-group-user.clearfix
+  .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
       = f.submit class: 'chat-group-form__action-btn'
