@@ -36,8 +36,8 @@ $(document).on('turbolinks:load', function(){
   }
 
   $('#user-search-field').on('keyup', function(e){
-    let input = $("#user-search-field").val();
 
+    let input = $("#user-search-field").val();
     $.ajax({
       url: "/users",
       type: "GET",
@@ -46,17 +46,26 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(users){
       $('#user-search-result').empty();
-      //var groupIdList[] = $('div[id=group_user_ids]').??();現行グループのid配列取得
-      //console.log('');
-      users.forEach(function(user){
-        //if (user.idはgroupIdList[]のどれとも一致しない){
-          searchedUserRowGenerater(user);
-        //}
-      });
+      var groupUsers = $("input[id='group_user_ids']");
+
+        users.forEach(function(user){
+          alreadyMember = 0;
+          groupUsers.each(function(index, groupUser){
+            var groupUserIn = $(groupUser).attr('value');
+            if(user.id == groupUserIn){
+              alreadyMember = 1;
+              // break;
+            }
+          });
+          if (alreadyMember == 0){
+            searchedUserRowGenerater(user);
+          }
+        });
+
       if($('.chat-group-user__btn--add').length === 0) {
         noResultRowGenerater(); 
       }
-      console.log($('.chat-group-user__btn--add').length);
+      //console.log($('.chat-group-user__btn--add').length);
     })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
