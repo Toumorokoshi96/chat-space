@@ -36,39 +36,40 @@ $(document).on('turbolinks:load', function(){
   }
 
   $('#user-search-field').on('keyup', function(e){
-
     let input = $("#user-search-field").val();
-    $.ajax({
-      url: "/users",
-      type: "GET",
-      data: {keyword: input},
-      dataType: 'json',
-    })
-    .done(function(users){
-      $('#user-search-result').empty();
-      let groupUsers = $("input[id='group_user_ids']");
+    if (input !== ""){
+      $.ajax({
+        url: "/users",
+        type: "GET",
+        data: {keyword: input},
+        dataType: 'json',
+      })
+      .done(function(users){
+        $('#user-search-result').empty();
+        let groupUsers = $("input[id='group_user_ids']");
 
-        users.forEach(function(user){
-          alreadyMemberFlag = false;
-          groupUsers.each(function(index, groupUser){
-            let groupUserID = $(groupUser).attr('value');
-            if(user.id == groupUserID){
-              alreadyMemberFlag = true;
-              return true;
+          users.forEach(function(user){
+            alreadyMemberFlag = false;
+            groupUsers.each(function(index, groupUser){
+              let groupUserID = $(groupUser).attr('value');
+              if(user.id == groupUserID){
+                alreadyMemberFlag = true;
+                return true;
+              }
+            });
+            if (alreadyMemberFlag == false){
+              searchedUserRowGenerater(user);
             }
           });
-          if (alreadyMemberFlag == false){
-            searchedUserRowGenerater(user);
-          }
-        });
 
-      if($('.chat-group-user__btn--add').length === 0) {
-        noResultRowGenerater(); 
-      }
-    })
-    .fail(function() {
-      alert('ユーザー検索に失敗しました');
-    })
+        if($('.chat-group-user__btn--add').length === 0) {
+          noResultRowGenerater(); 
+        }
+      })
+      .fail(function() {
+        alert('ユーザー検索に失敗しました');
+      })
+    }
   })
 
   $(document).off('click');
