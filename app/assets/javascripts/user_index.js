@@ -49,15 +49,15 @@ $(document).on('turbolinks:load', function(){
       let groupUsers = $("input[id='group_user_ids']");
 
         users.forEach(function(user){
-          alreadyMember = 0;
+          alreadyMember = false;
           groupUsers.each(function(index, groupUser){
             let groupUserID = $(groupUser).attr('value');
             if(user.id == groupUserID){
-              alreadyMember = 1;
+              alreadyMember = true;
               return true;
             }
           });
-          if (alreadyMember == 0){
+          if (alreadyMember == false){
             searchedUserRowGenerater(user);
           }
         });
