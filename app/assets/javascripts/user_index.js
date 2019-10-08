@@ -51,10 +51,10 @@ $(document).on('turbolinks:load', function(){
         users.forEach(function(user){
           alreadyMember = 0;
           groupUsers.each(function(index, groupUser){
-            let groupUserIn = $(groupUser).attr('value');
-            if(user.id == groupUserIn){
+            let groupUserID = $(groupUser).attr('value');
+            if(user.id == groupUserID){
               alreadyMember = 1;
-              // 一致したらループを抜ける
+              break;
             }
           });
           if (alreadyMember == 0){
