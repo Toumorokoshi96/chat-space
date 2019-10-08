@@ -1,22 +1,23 @@
 $(document).on('turbolinks:load', function(){
   function messageHTMLgenerater(message){
     let html = `
-    <div class='message' message_id = ${message.id}>
-    <div class='message__upper-info'>
-    <p class='message__upper-info__talker'>
-    ${message.name}
-    </p>
-    <p class='message__upper-info__date'>
-    ${message.date}
-    </p>
-    </div>
-    <p class='message__text'>
-    ${message.text}
-    </p>
-    <div class='message-content'>
-    ${message.image_src}
-    </div>
-    </div>`
+      <div class='message' message_id = ${message.id}>
+        <div class='message__upper-info'>
+          <p class='message__upper-info__talker'>
+            ${message.name}
+          </p>
+          <p class='message__upper-info__date'>
+            ${message.date}
+          </p>
+        </div>
+        <p class='message__text'>
+          ${message.text}
+        </p>
+        <div class='message-content'>
+          ${message.image_src}
+        </div>
+      </div>
+    `
     return html;
   }
 
