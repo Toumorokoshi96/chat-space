@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function(){
             let groupUserIn = $(groupUser).attr('value');
             if(user.id == groupUserIn){
               alreadyMember = 1;
-              // break;
+              // 一致したらループを抜ける
             }
           });
           if (alreadyMember == 0){
@@ -71,11 +71,12 @@ $(document).on('turbolinks:load', function(){
     })
   })
 
+  $(document).off('click');
   $(document).on('click', '.chat-group-user__btn--add', function(){
     let id = $('.user-search-add').data('user-id');
     let name = $('.user-search-add').data('user-name');
-    groupUserRowGenerater(id, name);
     $(this).closest('.chat-group-user').remove();
+    groupUserRowGenerater(id, name);
   });
 
   $(document).on('click', '.chat-group-user__btn--remove', function(){ 
