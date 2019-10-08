@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function(){
             let groupUserID = $(groupUser).attr('value');
             if(user.id == groupUserID){
               alreadyMember = 1;
-              break;
+              return true;
             }
           });
           if (alreadyMember == 0){
