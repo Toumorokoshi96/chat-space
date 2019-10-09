@@ -29,6 +29,10 @@ $(document).on('turbolinks:load', function(){
     messages.append(messageHTML);
     return messageHTML;
   }
+  function scrollToNewestMessage(){
+    let messagesTotalHeight = $('.messages').get(0).scrollHeight;
+    $('.messages').animate({scrollTop:messagesTotalHeight});
+  }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -48,8 +52,7 @@ $(document).on('turbolinks:load', function(){
       $('form').get(0).reset();
       $('.form__submit').prop('disabled', false);
 
-      let messagesTotalHeight = $('.messages').get(0).scrollHeight;
-      $('.messages').animate({scrollTop:messagesTotalHeight});
+      scrollToNewestMessage();
     })
     .fail(function(){
       alert("error");
@@ -70,8 +73,7 @@ $(document).on('turbolinks:load', function(){
         messages.forEach (function (message) {
           messageHTMLgenerater(message);
         });
-        let messagesTotalHeight = $('.messages').get(0).scrollHeight;
-        $('.messages').animate({scrollTop:messagesTotalHeight});
+        scrollToNewestMessage();
       })
       .fail(function() {
         alert('メッセージの自動更新に失敗しました');
