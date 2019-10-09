@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
   function messageHTMLgenerater(message){
     let messageHTML = `
       <div class='message' data-messageid = ${message.id}>
@@ -57,23 +58,28 @@ $(document).on('turbolinks:load', function(){
   })
 
   let reloadMessages = function() {
-    last_message_id = $('.message:last').data('messageid');
-    $.ajax({
-      url: 'api/messages',
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages) {
-      messages.forEach (function (message) {
-        messageHTMLgenerater(message);
+    if(document.URL.match(/groups\/\d+\/messages/)){
+      console.log(document.URL);
+      last_message_id = $('.message:last').data('messageid');
+      $.ajax({
+        url: 'api/messages',
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        messages.forEach (function (message) {
+          messageHTMLgenerater(message);
+        });
+        let messagesTotalHeight = $('.messages').get(0).scrollHeight;
+        $('.messages').animate({scrollTop:messagesTotalHeight});
+      })
+      .fail(function() {
+        alert('メッセージの自動更新に失敗しました');
       });
-      let messagesTotalHeight = $('.messages').get(0).scrollHeight;
-      $('.messages').animate({scrollTop:messagesTotalHeight});
-    })
-    .fail(function() {
-      alert('メッセージの自動更新に失敗しました');
-    });
+    }
   };
+
   setInterval(reloadMessages, 5000);
+
 })
