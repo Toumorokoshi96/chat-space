@@ -1,5 +1,4 @@
-json.id     @message.id
-json.name   @message.user.name
-json.text   @message.content 
-json.date   @message.created_at.strftime("%Y/%m/%d %H:%M")
-json.image_src "<img class='message__image' src='#{@message.image.url}' />" unless @message.image.nil?
+json.id @message.id
+json.created_at @message.created_at.strftime("%Y/%m/%d %H:%M")
+json.user_name @message.user.name
+json.(@message, :content, :image)
