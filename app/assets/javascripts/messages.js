@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   function messageHTMLgenerater(message){
-    let html = `
+    let messageHTML = `
       <div class='message' data-messageid = ${message.id}>
         <div class='message__upper-info'>
           <p class='message__upper-info__talker'>
@@ -11,20 +11,22 @@ $(document).on('turbolinks:load', function(){
           </p>
         </div>`
       if(message.content){
-        html = html +
+        messageHTML = messageHTML +
         `<p class='message__text'>
           ${message.content}
         </p>`}
 
       if (message.image.url){
-        html = html +
+        messageHTML = messageHTML +
         `<div class='message-content'>
           <img class='message__image' src='${message.image.url}' />
         </div>`
         }
-      html = html +
+        messageHTML = messageHTML +
       `</div>`
-    return html;
+    let messages = $('.messages');
+    messages.append(messageHTML);
+    return messageHTML;
   }
 
   $('#new_message').on('submit', function(e){
@@ -40,9 +42,7 @@ $(document).on('turbolinks:load', function(){
       contentType: false
     })
     .done(function(message){
-      let messageHTML = messageHTMLgenerater(message);
-      let messages = $('.messages');
-      messages.append(messageHTML);
+      messageHTMLgenerater(message);
 
       $('form').get(0).reset();
       $('.form__submit').prop('disabled', false);
@@ -71,9 +71,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(messages) {
       console.log('success');
       messages.forEach (function (message) {
-        let messageHTML = messageHTMLgenerater(message);
-        let messages = $('.messages');
-        messages.append(messageHTML);
+        messageHTMLgenerater(message);
       });
       let messagesTotalHeight = $('.messages').get(0).scrollHeight;
       $('.messages').animate({scrollTop:messagesTotalHeight});
