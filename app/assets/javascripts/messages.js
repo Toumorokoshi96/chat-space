@@ -4,20 +4,26 @@ $(document).on('turbolinks:load', function(){
       <div class='message' data-messageid = ${message.id}>
         <div class='message__upper-info'>
           <p class='message__upper-info__talker'>
-            ${message.name}
+            ${message.user_name}
           </p>
           <p class='message__upper-info__date'>
-            ${message.date}
+            ${message.created_at}
           </p>
-        </div>
-        <p class='message__text'>
-          ${message.text}
-        </p>
-        <div class='message-content'>
-          ${message.image_src}
-        </div>
-      </div>
-    `
+        </div>`
+      if(message.content){
+        html = html +
+        `<p class='message__text'>
+          ${message.content}
+        </p>`}
+
+      if (message.image.url){
+        html = html +
+        `<div class='message-content'>
+          <img class='message__image' src='${message.image.url}' />
+        </div>`
+        }
+      html = html +
+      `</div>`
     return html;
   }
 
@@ -64,6 +70,11 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(messages) {
       console.log('success');
+      messages.forEach (function (message) {
+        let messageHTML = messageHTMLgenerater(message);
+        let messages = $('.messages');
+        messages.append(messageHTML);
+      });
       let messagesTotalHeight = $('.messages').get(0).scrollHeight;
       $('.messages').animate({scrollTop:messagesTotalHeight});
     })
@@ -71,5 +82,5 @@ $(document).on('turbolinks:load', function(){
       console.log('error');
     });
   };
-  setInterval(reloadMessages, 500000);
+  setInterval(reloadMessages, 5000);
 })
