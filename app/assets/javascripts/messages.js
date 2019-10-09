@@ -65,7 +65,6 @@ $(document).on('turbolinks:load', function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
       messages.forEach (function (message) {
         messageHTMLgenerater(message);
       });
@@ -73,7 +72,7 @@ $(document).on('turbolinks:load', function(){
       $('.messages').animate({scrollTop:messagesTotalHeight});
     })
     .fail(function() {
-      console.log('error');
+      alert('メッセージの自動更新に失敗しました');
     });
   };
   setInterval(reloadMessages, 5000);
