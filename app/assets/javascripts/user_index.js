@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function(){
       `
     $('#user-search-result').append(html);
   }
+
   function groupUserRowGenerater(id, name){
     let html = `
       <div class='chat-group-user clearfix'>
@@ -35,6 +36,8 @@ $(document).on('turbolinks:load', function(){
     $('#user-search-result').append(html);
   }
 
+  let groupUsers = $("input[id='group_user_ids']");
+
   $('#user-search-field').on('keyup', function(e){
     let input = $("#user-search-field").val();
     if (input !== ""){
@@ -46,7 +49,6 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(users){
         $('#user-search-result').empty();
-        let groupUsers = $("input[id='group_user_ids']");
 
           users.forEach(function(user){
             alreadyMemberFlag = false;
@@ -72,7 +74,7 @@ $(document).on('turbolinks:load', function(){
     }
   })
 
-  $(document).off('click');
+  $(document).off('click'); //clickイベントの多重化防止
   $(document).on('click', '.chat-group-user__btn--add', function(){
     let id = $('.user-search-add').data('user-id');
     let name = $('.user-search-add').data('user-name');
@@ -82,5 +84,7 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on('click', '.chat-group-user__btn--remove', function(){ 
     $(this).closest('.chat-group-user').remove();
+    //groupMemberから除去＝次のkeyonイベントからは検索対象
+    //もし今のsearchedUsersに含まれているのなら復活
   });
 })

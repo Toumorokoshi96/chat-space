@@ -34,6 +34,7 @@ $(document).on('turbolinks:load', function(){
     $('.messages').animate({scrollTop:messagesTotalHeight});
   }
 
+  //メッセージの投稿も多重化することがあったためoffとかで防ぐ
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
